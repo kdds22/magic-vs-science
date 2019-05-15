@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://test_assets/mage.png" type="Texture" id=2]
-[ext_resource path="res://test_assets/cientist.png" type="Texture" id=3]
+[ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://test_assets/mage.png" type="Texture" id=3]
+[ext_resource path="res://test_assets/cientist.png" type="Texture" id=4]
+[ext_resource path="res://test_assets/arrow.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 76, 49 )
@@ -11,22 +13,27 @@ extents = Vector2( 76, 49 )
 extents = Vector2( 75, 32 )
 
 [node name="Test_Mechanics" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="Local_Duel" type="Sprite" parent="."]
 modulate = Color( 0.501961, 0.501961, 0.501961, 0.447059 )
 position = Vector2( 41, 27 )
 scale = Vector2( 9.95312, 14.1406 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 centered = false
 
-[node name="Mage" type="Area2D" parent="."]
+[node name="Mage" type="Area2D" parent="." groups=[
+"mage",
+"player",
+]]
+editor/display_folded = true
 position = Vector2( 360, 808 )
 
 [node name="Sprite" type="Sprite" parent="Mage"]
 modulate = Color( 0, 0.0392157, 1, 1 )
 position = Vector2( 0, -27 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mage"]
 position = Vector2( -2, 29 )
@@ -46,14 +53,18 @@ text = "MAGE"
 align = 1
 valign = 1
 
-[node name="Cientist" type="Area2D" parent="."]
+[node name="Cientist" type="Area2D" parent="." groups=[
+"player",
+"cientist",
+]]
+editor/display_folded = true
 position = Vector2( 362, 156 )
 
 [node name="Sprite" type="Sprite" parent="Cientist"]
 modulate = Color( 0.12549, 1, 0, 1 )
-position = Vector2( -3, 46 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
+position = Vector2( 9, 70 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cientist"]
 position = Vector2( -3, -19 )
@@ -73,3 +84,344 @@ text = "CIENTIST
 "
 align = 1
 valign = 1
+
+[node name="Position_CT" type="Position2D" parent="."]
+position = Vector2( 355, 205 )
+
+[node name="Position_MG" type="Position2D" parent="."]
+position = Vector2( 355, 738 )
+
+[node name="Elements" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, 289 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Control" type="Control" parent="Node2D"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="Node2D/Control"]
+margin_right = 538.0
+margin_bottom = 728.0
+
+[node name="Cientist" type="Control" parent="Node2D/Control"]
+margin_right = 534.0
+margin_bottom = 352.0
+
+[node name="lbl_cientista" type="Label" parent="Node2D/Control/Cientist"]
+margin_left = 98.0
+margin_top = 42.0
+margin_right = 163.0
+margin_bottom = 56.0
+rect_scale = Vector2( 5, 5 )
+text = "CIENTISTA"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_atack" type="Button" parent="Node2D/Control/Cientist"]
+editor/display_folded = true
+margin_left = 258.0
+margin_top = 143.0
+margin_right = 366.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/btn_atack"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "ATACK"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Position2D" type="Position2D" parent="Node2D/Control/Cientist/btn_atack"]
+position = Vector2( -21, 23 )
+
+[node name="btn_dodge" type="Button" parent="Node2D/Control/Cientist"]
+editor/display_folded = true
+margin_left = 401.0
+margin_top = 143.0
+margin_right = 509.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/btn_dodge"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "dodge"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Position2D" type="Position2D" parent="Node2D/Control/Cientist/btn_dodge"]
+position = Vector2( -21, 23 )
+
+[node name="btn_nucleo" type="Button" parent="Node2D/Control/Cientist"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 143.0
+margin_right = 178.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/btn_nucleo"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "NUCLEO"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_gama" type="Button" parent="Node2D/Control/Cientist"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 203.0
+margin_right = 178.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/btn_gama"]
+margin_right = 55.0
+margin_bottom = 31.0
+rect_scale = Vector2( 2, 2 )
+text = "gama"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_lazer" type="Button" parent="Node2D/Control/Cientist"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 266.0
+margin_right = 178.0
+margin_bottom = 324.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/btn_lazer"]
+margin_right = 53.0
+margin_bottom = 29.0
+rect_scale = Vector2( 2, 2 )
+text = "lazer"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Pos_Nucleo" type="Position2D" parent="Node2D/Control/Cientist"]
+position = Vector2( 49, 166 )
+
+[node name="Pos_Gama" type="Position2D" parent="Node2D/Control/Cientist"]
+position = Vector2( 49, 228 )
+
+[node name="Pos_Lazer" type="Position2D" parent="Node2D/Control/Cientist"]
+position = Vector2( 49, 293 )
+
+[node name="arrow_ct" type="Sprite" parent="Node2D/Control/Cientist"]
+position = Vector2( 48, 166 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="HSlider" type="HSlider" parent="Node2D/Control/Cientist"]
+margin_left = 250.0
+margin_top = 246.0
+margin_right = 388.0
+margin_bottom = 278.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="Node2D/Control/Cientist/HSlider"]
+margin_left = 37.0
+margin_top = 24.0
+margin_right = 107.0
+margin_bottom = 38.0
+text = "Velocidade"
+
+[node name="value" type="Label" parent="Node2D/Control/Cientist/HSlider"]
+margin_left = 16.0
+margin_top = -11.0
+margin_right = 86.0
+margin_bottom = 3.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "000"
+align = 1
+valign = 1
+
+[node name="Mage" type="Control" parent="Node2D/Control"]
+margin_top = 318.0
+margin_right = 526.0
+margin_bottom = 670.0
+
+[node name="lbl_mago" type="Label" parent="Node2D/Control/Mage"]
+margin_left = 98.0
+margin_top = 42.0
+margin_right = 163.0
+margin_bottom = 56.0
+rect_scale = Vector2( 5, 5 )
+text = "MAGO"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_atack" type="Button" parent="Node2D/Control/Mage"]
+editor/display_folded = true
+margin_left = 258.0
+margin_top = 143.0
+margin_right = 366.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/btn_atack"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "ATACK"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Position2D" type="Position2D" parent="Node2D/Control/Mage/btn_atack"]
+position = Vector2( -21, 23 )
+
+[node name="btn_dodge" type="Button" parent="Node2D/Control/Mage"]
+editor/display_folded = true
+margin_left = 401.0
+margin_top = 143.0
+margin_right = 509.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/btn_dodge"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "dodge"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Position2D" type="Position2D" parent="Node2D/Control/Mage/btn_dodge"]
+position = Vector2( -21, 23 )
+
+[node name="btn_imunity" type="Button" parent="Node2D/Control/Mage"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 143.0
+margin_right = 186.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/btn_imunity"]
+margin_right = 53.0
+margin_bottom = 25.0
+rect_scale = Vector2( 2, 2 )
+text = "imunity"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_mana" type="Button" parent="Node2D/Control/Mage"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 203.0
+margin_right = 187.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/btn_mana"]
+margin_right = 58.0
+margin_bottom = 26.0
+rect_scale = Vector2( 2, 2 )
+text = "mana"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="btn_item" type="Button" parent="Node2D/Control/Mage"]
+editor/display_folded = true
+margin_left = 70.0
+margin_top = 266.0
+margin_right = 187.0
+margin_bottom = 324.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/btn_item"]
+margin_right = 58.0
+margin_bottom = 29.0
+rect_scale = Vector2( 2, 2 )
+text = "item"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Pos_imunity" type="Position2D" parent="Node2D/Control/Mage"]
+position = Vector2( 49, 166 )
+
+[node name="Pos_Mana" type="Position2D" parent="Node2D/Control/Mage"]
+position = Vector2( 49, 228 )
+
+[node name="Pos_Item" type="Position2D" parent="Node2D/Control/Mage"]
+position = Vector2( 49, 293 )
+
+[node name="arrow_mg" type="Sprite" parent="Node2D/Control/Mage"]
+position = Vector2( 48, 166 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="HSlider" type="HSlider" parent="Node2D/Control/Mage"]
+margin_left = 250.0
+margin_top = 248.0
+margin_right = 388.0
+margin_bottom = 280.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="Node2D/Control/Mage/HSlider"]
+margin_left = 37.0
+margin_top = 24.0
+margin_right = 107.0
+margin_bottom = 38.0
+text = "Velocidade"
+
+[node name="value" type="Label" parent="Node2D/Control/Mage/HSlider"]
+margin_left = 16.0
+margin_top = -11.0
+margin_right = 86.0
+margin_bottom = 3.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "000"
+align = 1
+valign = 1
+[connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
+[connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
+[connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]
+[connection signal="pressed" from="Node2D/Control/Cientist/btn_gama" to="." method="_on_cientist_btn_gama_pressed"]
+[connection signal="pressed" from="Node2D/Control/Cientist/btn_lazer" to="." method="_on_cientist_btn_lazer_pressed"]
+[connection signal="value_changed" from="Node2D/Control/Cientist/HSlider" to="." method="_on_cientist_HSlider_value_changed"]
+[connection signal="pressed" from="Node2D/Control/Mage/btn_atack" to="." method="_on_mage_btn_atack_pressed"]
+[connection signal="pressed" from="Node2D/Control/Mage/btn_dodge" to="." method="_on_mage_btn_dodge_pressed"]
+[connection signal="pressed" from="Node2D/Control/Mage/btn_imunity" to="." method="_on_mage_btn_imunity_pressed"]
+[connection signal="pressed" from="Node2D/Control/Mage/btn_mana" to="." method="_on_mage_btn_mana_pressed"]
+[connection signal="pressed" from="Node2D/Control/Mage/btn_item" to="." method="_on_mage_btn_item_pressed"]
+[connection signal="value_changed" from="Node2D/Control/Mage/HSlider" to="." method="_on_mage_HSlider_value_changed"]
