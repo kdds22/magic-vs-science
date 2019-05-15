@@ -113,6 +113,17 @@ func _on_mage_HSlider_value_changed(value):
 	cur_velocity_element_mg = int(value)
 
 
+func hit(who):
+	if who == "cientist":
+		$Cientist/hit.visible = true
+		yield(get_tree().create_timer(.3), "timeout")
+		$Cientist/hit.visible = false
+
+	if who == "mage":
+		$Mage/hit.visible = true
+		yield(get_tree().create_timer(.3), "timeout")
+		$Mage/hit.visible = false
+
 
 
 

@@ -23,8 +23,8 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Mage" type="Area2D" parent="." groups=[
-"mage",
 "player",
+"mage",
 ]]
 editor/display_folded = true
 position = Vector2( 360, 808 )
@@ -52,6 +52,15 @@ rect_scale = Vector2( 2, 2 )
 text = "MAGE"
 align = 1
 valign = 1
+
+[node name="hit" type="Label" parent="Mage"]
+visible = false
+margin_left = 94.0
+margin_top = 22.0
+margin_right = 116.0
+margin_bottom = 36.0
+rect_scale = Vector2( 2, 2 )
+text = "HIT"
 
 [node name="Cientist" type="Area2D" parent="." groups=[
 "player",
@@ -84,6 +93,15 @@ text = "CIENTIST
 "
 align = 1
 valign = 1
+
+[node name="hit" type="Label" parent="Cientist"]
+visible = false
+margin_left = 92.0
+margin_top = -30.0
+margin_right = 114.0
+margin_bottom = -16.0
+rect_scale = Vector2( 2, 2 )
+text = "HIT"
 
 [node name="Position_CT" type="Position2D" parent="."]
 position = Vector2( 355, 205 )
@@ -241,6 +259,7 @@ margin_top = 246.0
 margin_right = 388.0
 margin_bottom = 278.0
 rect_scale = Vector2( 2, 2 )
+ticks_on_borders = true
 
 [node name="Label" type="Label" parent="Node2D/Control/Cientist/HSlider"]
 margin_left = 37.0
@@ -396,6 +415,7 @@ margin_top = 248.0
 margin_right = 388.0
 margin_bottom = 280.0
 rect_scale = Vector2( 2, 2 )
+ticks_on_borders = true
 
 [node name="Label" type="Label" parent="Node2D/Control/Mage/HSlider"]
 margin_left = 37.0

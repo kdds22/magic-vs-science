@@ -51,6 +51,10 @@ func _ready():
 func _process(delta):
 	position += dir * delta * velocity
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(area : Area2D):
 	if area.is_in_group("player"):
+		if area.is_in_group("mage"):
+			area.get_tree().get_root().get_child(0).hit("mage")
+		if area.is_in_group("cientist"):
+			area.get_tree().get_root().get_child(0).hit("cientist")
 		queue_free()
