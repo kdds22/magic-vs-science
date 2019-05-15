@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://test_assets/mage.png" type="Texture" id=2]
+[ext_resource path="res://test_assets/cientist.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 76, 49 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 75, 32 )
+
+[node name="Test_Mechanics" type="Node2D"]
+
+[node name="Local_Duel" type="Sprite" parent="."]
+modulate = Color( 0.501961, 0.501961, 0.501961, 0.447059 )
+position = Vector2( 41, 27 )
+scale = Vector2( 9.95312, 14.1406 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Mage" type="Area2D" parent="."]
+position = Vector2( 360, 808 )
+
+[node name="Sprite" type="Sprite" parent="Mage"]
+modulate = Color( 0, 0.0392157, 1, 1 )
+position = Vector2( 0, -27 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mage"]
+position = Vector2( -2, 29 )
+shape = SubResource( 1 )
+
+[node name="Panel" type="Panel" parent="Mage"]
+margin_left = -41.0
+margin_top = 70.0
+margin_right = 39.0
+margin_bottom = 96.0
+
+[node name="Mage_Player" type="Label" parent="Mage/Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2, 2 )
+text = "MAGE"
+align = 1
+valign = 1
+
+[node name="Cientist" type="Area2D" parent="."]
+position = Vector2( 362, 156 )
+
+[node name="Sprite" type="Sprite" parent="Cientist"]
+modulate = Color( 0.12549, 1, 0, 1 )
+position = Vector2( -3, 46 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cientist"]
+position = Vector2( -3, -19 )
+shape = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="Cientist"]
+margin_left = -57.0
+margin_top = -97.0
+margin_right = 56.0
+margin_bottom = -71.0
+
+[node name="Cientist_Player" type="Label" parent="Cientist/Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2, 2 )
+text = "CIENTIST
+"
+align = 1
+valign = 1
