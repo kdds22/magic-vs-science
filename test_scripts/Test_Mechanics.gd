@@ -42,11 +42,11 @@ func identify(player, cur_type):
 	var velocity
 	if player == "ct":
 		dir.y = 1
-		pos = $Position_CT.position
+		pos = $Pos_CT_Action.position
 		velocity = cur_velocity_element_ct
 	if player == "mg":
 		dir.y = -1
-		pos = $Position_MG.position
+		pos = $Pos_MG_Action.position
 		velocity = cur_velocity_element_mg
 	
 	action(player, cur_type, dir, pos, velocity)
@@ -68,6 +68,7 @@ func _on_cientist_btn_atack_pressed():
 	identify("ct", cur_type_ct)
 	pass
 func _on_cientist_btn_dodge_pressed():
+	$Cientist/AnimationPlayer.play("dodge")
 	$Cientist/CollisionShape2D.disabled = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	$Cientist/CollisionShape2D.disabled = false
@@ -76,6 +77,7 @@ func _on_cientist_btn_dodge_pressed():
 func _on_mage_btn_atack_pressed():
 	identify("mg", cur_type_mg)
 func _on_mage_btn_dodge_pressed():
+	$Mage/AnimationPlayer.play("dodge")
 	$Mage/CollisionShape2D.disabled = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	$Mage/CollisionShape2D.disabled = false

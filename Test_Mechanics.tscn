@@ -1,19 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://test_assets/mage.png" type="Texture" id=3]
-[ext_resource path="res://test_assets/cientist.png" type="Texture" id=4]
+[ext_resource path="res://scenes/caution_dodge.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/character.tscn" type="PackedScene" id=4]
 [ext_resource path="res://test_assets/arrow.png" type="Texture" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 76, 49 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 75, 32 )
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 359.0 ]
+}
 
 [node name="Local_Duel" type="Sprite" parent="."]
 modulate = Color( 0.501961, 0.501961, 0.501961, 0.447059 )
@@ -22,92 +19,32 @@ scale = Vector2( 9.95312, 14.1406 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Mage" type="Area2D" parent="." groups=[
-"player",
-"mage",
-]]
-editor/display_folded = true
-position = Vector2( 360, 808 )
+[node name="Caution_Area" parent="." instance=ExtResource( 3 )]
+position = Vector2( 359, 622 )
 
-[node name="Sprite" type="Sprite" parent="Mage"]
-modulate = Color( 0, 0.0392157, 1, 1 )
-position = Vector2( 0, -27 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 3 )
+[node name="Mage" parent="." instance=ExtResource( 4 )]
+position = Vector2( 359, 841 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mage"]
-position = Vector2( -2, 29 )
-shape = SubResource( 1 )
+[node name="Caution_Area2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 359, 311 )
+scale = Vector2( -1, -1 )
 
-[node name="Panel" type="Panel" parent="Mage"]
-margin_left = -41.0
-margin_top = 70.0
-margin_right = 39.0
-margin_bottom = 96.0
+[node name="Cientist" parent="." instance=ExtResource( 4 )]
+position = Vector2( 353, 99 )
+scale = Vector2( -1, 1 )
+Player = 1
 
-[node name="Mage_Player" type="Label" parent="Mage/Panel"]
-margin_right = 40.0
-margin_bottom = 14.0
-rect_scale = Vector2( 2, 2 )
-text = "MAGE"
-align = 1
-valign = 1
+[node name="Pos_Cien" type="Position2D" parent="."]
+position = Vector2( 358, 99 )
 
-[node name="hit" type="Label" parent="Mage"]
-visible = false
-margin_left = 94.0
-margin_top = 22.0
-margin_right = 116.0
-margin_bottom = 36.0
-rect_scale = Vector2( 2, 2 )
-text = "HIT"
+[node name="Pos_Mag" type="Position2D" parent="."]
+position = Vector2( 358, 858 )
 
-[node name="Cientist" type="Area2D" parent="." groups=[
-"player",
-"cientist",
-]]
-editor/display_folded = true
-position = Vector2( 362, 156 )
+[node name="Pos_CT_Action" type="Position2D" parent="."]
+position = Vector2( 359, 205 )
 
-[node name="Sprite" type="Sprite" parent="Cientist"]
-modulate = Color( 0.12549, 1, 0, 1 )
-position = Vector2( 9, 70 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cientist"]
-position = Vector2( -3, -19 )
-shape = SubResource( 2 )
-
-[node name="Panel" type="Panel" parent="Cientist"]
-margin_left = -57.0
-margin_top = -97.0
-margin_right = 56.0
-margin_bottom = -71.0
-
-[node name="Cientist_Player" type="Label" parent="Cientist/Panel"]
-margin_right = 40.0
-margin_bottom = 14.0
-rect_scale = Vector2( 2, 2 )
-text = "CIENTIST
-"
-align = 1
-valign = 1
-
-[node name="hit" type="Label" parent="Cientist"]
-visible = false
-margin_left = 92.0
-margin_top = -30.0
-margin_right = 114.0
-margin_bottom = -16.0
-rect_scale = Vector2( 2, 2 )
-text = "HIT"
-
-[node name="Position_CT" type="Position2D" parent="."]
-position = Vector2( 355, 205 )
-
-[node name="Position_MG" type="Position2D" parent="."]
-position = Vector2( 355, 738 )
+[node name="Pos_MG_Action" type="Position2D" parent="."]
+position = Vector2( 359, 738 )
 
 [node name="Elements" type="Node" parent="."]
 
@@ -116,6 +53,7 @@ position = Vector2( 0, 289 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Control" type="Control" parent="Node2D"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -124,6 +62,7 @@ margin_right = 538.0
 margin_bottom = 728.0
 
 [node name="Cientist" type="Control" parent="Node2D/Control"]
+editor/display_folded = true
 margin_right = 534.0
 margin_bottom = 352.0
 
@@ -279,6 +218,7 @@ align = 1
 valign = 1
 
 [node name="Mage" type="Control" parent="Node2D/Control"]
+editor/display_folded = true
 margin_top = 318.0
 margin_right = 526.0
 margin_bottom = 670.0
