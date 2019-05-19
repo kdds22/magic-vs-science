@@ -62,9 +62,14 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 #	yield(get_tree().create_timer(2, true), "timeout")
 
 	var element = pre_element.instance()
-	element.position = pos
-	$Elements.add_child(element)
 	element.init(who, type, dir, velocity)
+	var pre_ele = element.get_ele()
+	var ele = pre_ele.instance()
+	ele.position = pos
+	ele.set_flag(true)
+	ele.dir = Vector2(0, -1)
+	$Elements.add_child(ele)
+#	element.init(who, type, dir, velocity) # identify elemnt
 #	action()
 
 
@@ -150,10 +155,10 @@ func set_debug_element(value):
 #	print(value)
 	if value == "Mana":
 		_on_mage_btn_mana_pressed()
-		set_combination(1)
+		set_combination(0)
 	if value == "Knowledge":
 		_on_mage_btn_imunity_pressed()
-		set_combination(0)
+		set_combination(1)
 	if value == "Item":
 		_on_mage_btn_item_pressed()
 		set_combination(2)
@@ -165,12 +170,16 @@ func set_debug_element(value):
 			_on_mage_btn_atack_pressed()
 			mg_combinations.clear()
 			for i in $Show_Elements/Control/HBoxContainer.get_children():
-				i.texture = null
+				for j in i.get_children():
+					j.queue_free()
+				Global_Player.cur_comb = ""
 	
 	if mg_combinations.size() > 3:
 		mg_combinations.clear()
 		for i in $Show_Elements/Control/HBoxContainer.get_children():
-			i.texture = null
+			for j in i.get_children():
+				j.queue_free()
+			Global_Player.cur_comb = ""
 	
 	print(mg_combinations)
 
@@ -179,11 +188,15 @@ func set_debug_element(value):
 
 func set_combination(value):
 	mg_combinations.append(value)
-	Global_Player.cur_comb += str(value)
-	print(Global_Player.cur_comb) ## set_combinations
 	if mg_combinations.size() < 4:
+		Global_Player.cur_comb += str(value)
+		print(Global_Player.cur_comb) ## set_combinations
 		var i = $Show_Elements/Control/HBoxContainer
-		i.get_child(mg_combinations.size() - 1).texture = load(Global_Player.cur_tex_element(value))
+#		i.get_child(mg_combinations.size() - 1).texture = load(Global_Player.cur_tex_element(value))
+		var pre = Global_Player.cur_tex_element(value).instance()
+#		pre.position = i.get_child(mg_combinations.size() - 1).position
+		pre.scale = Vector2(.5, .5)
+		i.get_child(mg_combinations.size() - 1).add_child(pre)
 	pass
 
 

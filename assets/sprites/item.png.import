@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Desviando_Mago-Sheet.png-4216cb97f433ca5f8c83123bc2ae6eac.stex"
+path="res://.import/item.png-e0f1730537e27ee527aa51597df1bcb5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Desviando_Mago-Sheet.png"
-dest_files=[ "res://.import/Desviando_Mago-Sheet.png-4216cb97f433ca5f8c83123bc2ae6eac.stex" ]
+source_file="res://assets/sprites/item.png"
+dest_files=[ "res://.import/item.png-e0f1730537e27ee527aa51597df1bcb5.stex" ]
 
 [params]
 

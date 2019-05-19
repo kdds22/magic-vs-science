@@ -426,22 +426,16 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -1.0
+alignment = 1
 
-[node name="First" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
-margin_bottom = 64.0
-stretch_mode = 5
+[node name="Position2D" type="Position2D" parent="Show_Elements/Control/HBoxContainer"]
+position = Vector2( 39, 34 )
 
-[node name="Second" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
-margin_left = 4.0
-margin_right = 4.0
-margin_bottom = 64.0
-stretch_mode = 3
+[node name="Position2D2" type="Position2D" parent="Show_Elements/Control/HBoxContainer"]
+position = Vector2( 103, 34 )
 
-[node name="Third" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
-margin_left = 8.0
-margin_right = 8.0
-margin_bottom = 64.0
-stretch_mode = 3
+[node name="Position2D3" type="Position2D" parent="Show_Elements/Control/HBoxContainer"]
+position = Vector2( 166, 34 )
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]

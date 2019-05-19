@@ -148,8 +148,10 @@ func elements(value):
 			"P" : 
 				ct_index = 2
 				ele = cientists_elements[ct_index]
-			"Backspace" : ele = "Atack"
-			"Enter" : ele = "Dodge"
+			"Backspace" : 
+				ele = "Atack"
+			"Enter" : 
+				ele = "Dodge"
 	
 	return ele
 

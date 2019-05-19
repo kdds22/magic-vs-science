@@ -41,7 +41,10 @@ func _draw():
 	pass
 
 
-
+func hit():
+	$hit.visible = true
+	yield(get_tree().create_timer(.3), "timeout")
+	$hit.visible = false
 
 
 

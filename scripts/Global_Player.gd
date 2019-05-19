@@ -11,9 +11,13 @@ onready var cur_tex_element : String
 onready var cur_tex_element_ct : Array =  ["res://test_assets/nucleo.png",
 					"res://test_assets/gama.png",
 					"res://test_assets/lazer.png"]
-onready var cur_tex_element_mg : Array = ["res://test_assets/imunity.png",
-					"res://test_assets/mana.png",
-					"res://test_assets/item.png"]
+#onready var cur_tex_element_mg : Array = ["res://test_assets/imunity.png",
+#					"res://test_assets/mana.png",
+#					"res://test_assets/item.png"]
+onready var cur_tex_element_mg : Array = [
+					preload("res://scenes/Elements_Mana.tscn"),
+					preload("res://scenes/Elements_Grim.tscn"),
+					preload("res://scenes/Elements_Item.tscn")]
 
 
 func cur_tex_element(value):
