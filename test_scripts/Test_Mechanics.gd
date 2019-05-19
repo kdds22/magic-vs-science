@@ -2,7 +2,9 @@ extends Node2D
 
 var player
 var cur_type_ct = "nucleo"
+var ct_combinations : Array
 var cur_type_mg = "imunity"
+var mg_combinations : Array
 var dir : Vector2
 var cur_velocity_element_ct = 0
 var cur_velocity_element_mg = 0
@@ -28,6 +30,8 @@ onready var arrow_ct = $Node2D/Control/Cientist/arrow_ct
 onready var arrow_mg = $Node2D/Control/Mage/arrow_mg
 
 func _ready():
+	Global_Player.cur_player = 0 #set Mage
+	
 	$Node2D/Control/Cientist/HSlider.min_value = 1
 	$Node2D/Control/Cientist/HSlider.max_value = 500
 	$Node2D/Control/Cientist/HSlider.step = 10
@@ -114,7 +118,6 @@ func _on_mage_HSlider_value_changed(value):
 	$Node2D/Control/Mage/HSlider/value.text = str(int(value))
 	cur_velocity_element_mg = int(value)
 
-
 func hit(who):
 	if who == "cientist":
 		$Cientist/hit.visible = true
@@ -125,6 +128,70 @@ func hit(who):
 		$Mage/hit.visible = true
 		yield(get_tree().create_timer(.3), "timeout")
 		$Mage/hit.visible = false
+
+
+func _input(event):
+	
+	if event.is_pressed() and not event.is_echo():
+		var text = $Elements.identify_elements(event.as_text())
+		set_debug_element(text[1])
+		set_input_text(text[0], text[1])
+
+
+func set_input_text(text, type):
+	
+	$Node2D/Control/Input/lbl_Text.text = text
+	$Node2D/Control/Input/lbl_Element.text = type
+	
+	pass
+
+
+func set_debug_element(value):
+#	print(value)
+	if value == "Mana":
+		_on_mage_btn_mana_pressed()
+		set_combination(1)
+	if value == "Knowledge":
+		_on_mage_btn_imunity_pressed()
+		set_combination(0)
+	if value == "Item":
+		_on_mage_btn_item_pressed()
+		set_combination(2)
+	if value == "Dodge":
+		_on_mage_btn_dodge_pressed()
+	
+	if mg_combinations.size() == 3:
+		if value == "Atack":
+			_on_mage_btn_atack_pressed()
+			mg_combinations.clear()
+			for i in $Show_Elements/Control/HBoxContainer.get_children():
+				i.texture = null
+	
+	if mg_combinations.size() > 3:
+		mg_combinations.clear()
+		for i in $Show_Elements/Control/HBoxContainer.get_children():
+			i.texture = null
+	
+	print(mg_combinations)
+
+	pass
+	
+
+func set_combination(value):
+	mg_combinations.append(value)
+	Global_Player.cur_comb += str(value)
+	print(Global_Player.cur_comb) ## set_combinations
+	if mg_combinations.size() < 4:
+		var i = $Show_Elements/Control/HBoxContainer
+		i.get_child(mg_combinations.size() - 1).texture = load(Global_Player.cur_tex_element(value))
+	pass
+
+
+
+
+
+
+
 
 
 

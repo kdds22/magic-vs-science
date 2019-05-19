@@ -4,7 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://scenes/caution_dodge.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/character.tscn" type="PackedScene" id=4]
-[ext_resource path="res://test_assets/arrow.png" type="Texture" id=5]
+[ext_resource path="res://scripts/elements.gd" type="Script" id=5]
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
@@ -46,20 +46,18 @@ position = Vector2( 359, 205 )
 [node name="Pos_MG_Action" type="Position2D" parent="."]
 position = Vector2( 359, 738 )
 
-[node name="Elements" type="Node" parent="."]
-
 [node name="Node2D" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, 289 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Control" type="Control" parent="Node2D"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Panel" type="Panel" parent="Node2D/Control"]
 margin_right = 538.0
-margin_bottom = 728.0
+margin_bottom = 864.0
 
 [node name="Cientist" type="Control" parent="Node2D/Control"]
 editor/display_folded = true
@@ -190,7 +188,6 @@ position = Vector2( 49, 293 )
 [node name="arrow_ct" type="Sprite" parent="Node2D/Control/Cientist"]
 position = Vector2( 48, 166 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
 
 [node name="HSlider" type="HSlider" parent="Node2D/Control/Cientist"]
 margin_left = 250.0
@@ -347,7 +344,6 @@ position = Vector2( 49, 293 )
 [node name="arrow_mg" type="Sprite" parent="Node2D/Control/Mage"]
 position = Vector2( 48, 166 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
 
 [node name="HSlider" type="HSlider" parent="Node2D/Control/Mage"]
 margin_left = 250.0
@@ -373,6 +369,79 @@ rect_scale = Vector2( 1.5, 1.5 )
 text = "000"
 align = 1
 valign = 1
+
+[node name="Input" type="Control" parent="Node2D/Control"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="lbl_Input" type="Label" parent="Node2D/Control/Input"]
+margin_left = 30.0
+margin_top = 740.0
+margin_right = 70.0
+margin_bottom = 754.0
+rect_scale = Vector2( 3, 3 )
+text = "INPUT"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="lbl_Text" type="Label" parent="Node2D/Control/Input"]
+margin_left = 162.0
+margin_top = 740.0
+margin_right = 202.0
+margin_bottom = 754.0
+rect_scale = Vector2( 3, 3 )
+align = 1
+valign = 1
+uppercase = true
+
+[node name="lbl_Element" type="Label" parent="Node2D/Control/Input"]
+margin_left = 328.0
+margin_top = 746.0
+margin_right = 393.0
+margin_bottom = 760.0
+rect_scale = Vector2( 2, 2 )
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Elements" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Show_Elements" type="Node2D" parent="."]
+position = Vector2( 130, 814 )
+
+[node name="Control" type="Control" parent="Show_Elements"]
+margin_left = -72.0
+margin_top = -47.0
+margin_right = 140.0
+margin_bottom = 18.0
+
+[node name="Panel" type="Panel" parent="Show_Elements/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Show_Elements/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -1.0
+
+[node name="First" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
+margin_bottom = 64.0
+stretch_mode = 5
+
+[node name="Second" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 64.0
+stretch_mode = 3
+
+[node name="Third" type="TextureRect" parent="Show_Elements/Control/HBoxContainer"]
+margin_left = 8.0
+margin_right = 8.0
+margin_bottom = 64.0
+stretch_mode = 3
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]

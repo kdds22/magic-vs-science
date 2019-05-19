@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Elements",
+"language": "GDScript",
+"path": "res://scripts/elements.gd"
+} ]
 _global_script_class_icons={
-
+"Elements": ""
 }
 
 [application]
@@ -18,6 +23,10 @@ _global_script_class_icons={
 config/name="Duel of the Century"
 run/main_scene="res://Test_Mechanics.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global_Player="*res://scripts/Global_Player.gd"
 
 [display]
 

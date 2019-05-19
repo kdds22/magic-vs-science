@@ -39,11 +39,15 @@ func init(cat:String, path:String, dir:Vector2, velocity:int):
 			"item":
 				tex = type_m[2]
 		
+		
 		$Area2D/Sprite.texture = load(tex)
+		
 
 
 func _ready():
-	print("ready")
+	
+	
+	pass
 	
 	
 
@@ -54,7 +58,9 @@ func _process(delta):
 func _on_Area2D_area_entered(area : Area2D):
 	if area.is_in_group("player"):
 		if area.is_in_group("mage"):
-			area.get_tree().get_root().get_child(0).hit("mage")
+#			area.get_tree().get_root().get_child(0).hit("mage")
+			area.get_tree().get_root().get_child(get_child_count()).hit("mage")
 		if area.is_in_group("cientist"):
-			area.get_tree().get_root().get_child(0).hit("cientist")
+#			area.get_tree().get_root().get_child(0).hit("cientist")
+			area.get_tree().get_root().get_child(get_child_count()).hit("cientist")
 		queue_free()
