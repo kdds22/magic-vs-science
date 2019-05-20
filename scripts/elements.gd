@@ -65,14 +65,14 @@ onready var mage_combinations : Dictionary = {
 	},
 	
 	# 223
-	"Guided Cobra" : {
+	"Voodoo" : {
 		"Dano" : 1,
 		"Vel" : 2,
 		"chance" : 99
 	},
 	
 	# 332
-	"Voodoo" : {
+	"Guided Cobra" : {
 		"Dano" : 1,
 		"Vel" : 3,
 		"chance" : 66
@@ -110,11 +110,12 @@ func identify_elements(value):
 			"Space": key = value
 		
 	if Global_Player.cur_player == 1:
+#		print(value)
 		match value:
 			"I": key = value
 			"O": key = value
 			"P": key = value
-			"Backspace": key = value
+			"BackSpace": key = value
 			"Enter": key = value
 	
 	return [key, elements(key)]
@@ -148,7 +149,7 @@ func elements(value):
 			"P" : 
 				ct_index = 2
 				ele = cientists_elements[ct_index]
-			"Backspace" : 
+			"BackSpace" : 
 				ele = "Atack"
 			"Enter" : 
 				ele = "Dodge"

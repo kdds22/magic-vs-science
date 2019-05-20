@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Elements_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Elements_Nucleo.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/Nucleo-Sheet.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 56.0803
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Elements_Nucleo" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+hframes = 4
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_Elements_area_entered"]

@@ -9,6 +9,11 @@ onready var pre_mg_ele : Array = [
 	preload("res://scenes/Elements_Mana.tscn"),
 	preload("res://scenes/Elements_Item.tscn")
 ]
+onready var pre_ct_ele : Array = [
+	preload("res://scenes/Elements_Nucleo.tscn"),
+	preload("res://scenes/Elements_Energy.tscn"),
+	preload("res://scenes/Elements_UV.tscn")
+]
 
 
 onready var type_c : Array =  [
@@ -28,6 +33,8 @@ export (Vector2) var dir : Vector2
 
 var ele
 
+var comb_path
+
 #func init(cat = self.cat, path = self.path, dir = self.dir):
 func init(cat:String, path:String, dir:Vector2, velocity:int):
 	_ready()
@@ -38,27 +45,43 @@ func init(cat:String, path:String, dir:Vector2, velocity:int):
 	self.velocity = velocity
 	
 	
+	if cat == "mg":
+		for i in Global_Player.mg_comb_name.size():
+			if path == Global_Player.mg_comb_name[i]:
+				ele = Global_Player.mg_comb_path[i]
+				print(path)
+	if cat == "ct":
+		for i in Global_Player.ct_comb_name.size():
+			if path == Global_Player.ct_comb_name[i]:
+				ele = Global_Player.ct_comb_path[i]
+				print(path)
+			
+	
 	if cat == "ct" or cat == "mg":
-		print(path," - ", cat, dir, velocity)
+#		print(path," - ", cat, dir, velocity)
+		
 		match path:
 			"nucleo":
-				tex = type_c[0]
+#				tex = type_c[0]
+				ele = pre_ct_ele[0]
 			"gama":
-				tex = type_c[1]
+#				tex = type_c[1]
+				ele = pre_ct_ele[1]
 			"lazer":
-				tex = type_c[2]
+#				tex = type_c[2]
+				ele = pre_ct_ele[2]
 			"imunity":
-				tex = type_m[0]
+#				tex = type_m[0]
 				ele = pre_mg_ele[0]
 			"mana":
-				tex = type_m[1]
+#				tex = type_m[1]
 				ele = pre_mg_ele[1]
 			"item":
-				tex = type_m[2]
+#				tex = type_m[2]
 				ele = pre_mg_ele[2]
 		
 		
-		$Area2D/Sprite.texture = load(tex)
+#		$Area2D/Sprite.texture = load(tex)
 		
 
 func get_ele():
@@ -68,8 +91,9 @@ func _ready():
 	
 	
 	pass
-	
-	
+
+
+
 
 
 func _process(delta):
