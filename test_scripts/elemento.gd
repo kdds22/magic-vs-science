@@ -15,16 +15,16 @@ onready var pre_ct_ele : Array = [
 	preload("res://scenes/Elements_UV.tscn")
 ]
 
-
-onready var type_c : Array =  [
-					"res://test_assets/nucleo.png",
-					"res://test_assets/gama.png",
-					"res://test_assets/lazer.png"]
-
-onready var type_m : Array = [
-					"res://test_assets/imunity.png",
-					"res://test_assets/mana.png",
-					"res://test_assets/item.png"]
+#
+#onready var type_c : Array =  [
+#					"res://test_assets/nucleo.png",
+#					"res://test_assets/gama.png",
+#					"res://test_assets/lazer.png"]
+#
+#onready var type_m : Array = [
+#					"res://test_assets/imunity.png",
+#					"res://test_assets/mana.png",
+#					"res://test_assets/item.png"]
 
 
 export (String) var cat : String
@@ -44,21 +44,21 @@ func init(cat:String, path:String, dir:Vector2, velocity:int):
 	self.dir = dir
 	self.velocity = velocity
 	
+	print(self.dir)
 	
 	if cat == "mg":
-		for i in Global_Player.mg_comb_name.size():
-			if path == Global_Player.mg_comb_name[i]:
-				ele = Global_Player.mg_comb_path[i]
+		for i in Global_Player_Mage.mg_comb_name.size():
+			if path == Global_Player_Mage.mg_comb_name[i]:
+				ele = Global_Player_Mage.mg_comb_path[i]
 				print(path)
 	if cat == "ct":
-		for i in Global_Player.ct_comb_name.size():
-			if path == Global_Player.ct_comb_name[i]:
-				ele = Global_Player.ct_comb_path[i]
+		for i in Global_Player_Cientist.ct_comb_name.size():
+			if path == Global_Player_Cientist.ct_comb_name[i]:
+				ele = Global_Player_Cientist.ct_comb_path[i]
 				print(path)
 			
 	
 	if cat == "ct" or cat == "mg":
-#		print(path," - ", cat, dir, velocity)
 		
 		match path:
 			"nucleo":
@@ -85,15 +85,7 @@ func init(cat:String, path:String, dir:Vector2, velocity:int):
 		
 
 func get_ele():
-	return ele
-
-func _ready():
-	
-	
-	pass
-
-
-
+	return [ele, dir]
 
 
 func _process(delta):

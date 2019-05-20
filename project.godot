@@ -26,7 +26,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Global_Player="*res://scripts/Global_Player.gd"
+Global_Player_Cientist="*res://scripts/Global_Player_Cientist.gd"
+Global_Player_Mage="*res://scripts/Global_Player_Mage.gd"
 
 [display]
 
@@ -67,4 +68,3 @@ quality/intended_usage/framebuffer_allocation.mobile=1
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

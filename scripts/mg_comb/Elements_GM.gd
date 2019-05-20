@@ -8,5 +8,5 @@ func _process(delta):
 		self.rotation += delta * 3
 
 func _on_Elements_area_entered(area):
-	self.ex(area)
+#	self.ex(area)
 	self.area(area)

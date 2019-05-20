@@ -101,7 +101,7 @@ var ele : String = ""
 
 func identify_elements(value):
 	key = ""
-	if Global_Player.cur_player == 0:
+	if Global_Player_Mage.cur_player == 0:
 		match value:
 			"Q": key = value
 			"W": key = value
@@ -109,7 +109,7 @@ func identify_elements(value):
 			"R": key = value
 			"Space": key = value
 		
-	if Global_Player.cur_player == 1:
+	if Global_Player_Cientist.cur_player == 1:
 #		print(value)
 		match value:
 			"I": key = value
@@ -122,7 +122,7 @@ func identify_elements(value):
 
 func elements(value):
 	ele = ""
-	if Global_Player.cur_player == 0:
+	if Global_Player_Mage.cur_player == 0:
 		match value:
 			"Q" : 
 				mg_index = 0
@@ -138,7 +138,7 @@ func elements(value):
 			"Space" : 
 				ele = "Dodge"
 		
-	if Global_Player.cur_player == 1:
+	if Global_Player_Cientist.cur_player == 1:
 		match value:
 			"I" : 
 				ct_index = 0
