@@ -9,6 +9,8 @@ func _ready():
 	$Result/Node2D/Button.hide()
 	
 	pass
+	
+
 
 func _on_Mage_game_over_mage():
 	get_tree().paused = true

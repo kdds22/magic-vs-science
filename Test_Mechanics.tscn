@@ -510,6 +510,7 @@ texture = ExtResource( 10 )
 
 [node name="Button" type="Button" parent="Result/Node2D"]
 pause_mode = 2
+visible = false
 margin_left = -158.75
 margin_top = -43.75
 margin_right = -93.75

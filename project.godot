@@ -22,6 +22,7 @@ _global_script_class_icons={
 
 config/name="Duel of the Century"
 run/main_scene="res://scenes/Splash.tscn"
+boot_splash/image="res://assets/sprites/TelaSplash.png"
 config/icon="res://icon.png"
 
 [autoload]
