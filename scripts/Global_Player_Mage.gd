@@ -6,6 +6,8 @@ onready var cur_comb_mg : String = ""
 # Mage = 0 | Cientist = 1
 onready var cur_player : int
 
+onready var life = 20
+
 onready var cur_tex_element : String
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Cenario3.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://scripts/elements.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/caixamago.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/caixacientista.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/Winner.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/Loser.png" type="Texture" id=10]
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
@@ -477,6 +479,45 @@ position = Vector2( 107, 32 )
 
 [node name="Position2D3" type="Position2D" parent="Show_Elements2/Control/HBoxContainer"]
 position = Vector2( 171, 32 )
+
+[node name="Result" type="Node2D" parent="."]
+position = Vector2( 355, 478 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Mage" type="Node2D" parent="Result"]
+position = Vector2( 272.5, 486.25 )
+
+[node name="Win" type="Sprite" parent="Result/Mage"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Los" type="Sprite" parent="Result/Mage"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="Cientist" type="Node2D" parent="Result"]
+position = Vector2( -248.75, -486.25 )
+
+[node name="Win" type="Sprite" parent="Result/Cientist"]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="Los" type="Sprite" parent="Result/Cientist"]
+visible = false
+texture = ExtResource( 10 )
+
+[node name="Node2D" type="Node2D" parent="Result"]
+
+[node name="Button" type="Button" parent="Result/Node2D"]
+pause_mode = 2
+margin_left = -158.75
+margin_top = -43.75
+margin_right = -93.75
+margin_bottom = -23.75
+rect_scale = Vector2( 5, 5 )
+text = "RESTART"
+[connection signal="game_over_mage" from="Mage" to="." method="_on_Mage_game_over_mage"]
+[connection signal="game_over_cientist" from="Cientist" to="." method="_on_Cientist_game_over_cientist"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]
@@ -489,6 +530,7 @@ position = Vector2( 171, 32 )
 [connection signal="pressed" from="Node2D/Control/Mage/btn_mana" to="." method="_on_mage_btn_mana_pressed"]
 [connection signal="pressed" from="Node2D/Control/Mage/btn_item" to="." method="_on_mage_btn_item_pressed"]
 [connection signal="value_changed" from="Node2D/Control/Mage/HSlider" to="." method="_on_mage_HSlider_value_changed"]
+[connection signal="pressed" from="Result/Node2D/Button" to="." method="_on_Button_pressed"]
 
 [editable path="Mage"]
 

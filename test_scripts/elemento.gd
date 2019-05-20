@@ -15,16 +15,6 @@ onready var pre_ct_ele : Array = [
 	preload("res://scenes/Elements_UV.tscn")
 ]
 
-#
-#onready var type_c : Array =  [
-#					"res://test_assets/nucleo.png",
-#					"res://test_assets/gama.png",
-#					"res://test_assets/lazer.png"]
-#
-#onready var type_m : Array = [
-#					"res://test_assets/imunity.png",
-#					"res://test_assets/mana.png",
-#					"res://test_assets/item.png"]
 
 
 export (String) var cat : String

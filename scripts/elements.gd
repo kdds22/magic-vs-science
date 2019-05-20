@@ -134,9 +134,9 @@ func elements(value):
 				mg_index = 2
 				ele = mage_elements[mg_index]
 			"R" : 
-				ele = "Atack"
+				ele = "Atack_Mage"
 			"Space" : 
-				ele = "Dodge"
+				ele = "Dodge_Mage"
 		
 	if Global_Player_Cientist.cur_player == 1:
 		match value:
@@ -150,9 +150,9 @@ func elements(value):
 				ct_index = 2
 				ele = cientists_elements[ct_index]
 			"BackSpace" : 
-				ele = "Atack"
+				ele = "Atack_Cientist"
 			"Enter" : 
-				ele = "Dodge"
+				ele = "Dodge_Cientist"
 	
 	return ele
 
