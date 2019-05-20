@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Duel of the Century"
-run/main_scene="res://Test_Mechanics.tscn"
+run/main_scene="res://scenes/Splash.tscn"
 config/icon="res://icon.png"
 
 [autoload]

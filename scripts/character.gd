@@ -20,7 +20,7 @@ func _ready():
 		$Sprite.texture = load(mage_sprite)
 		add_to_group("mage")
 	if Player == 1:
-		$Sprite.scale.y = -0.8
+		$Sprite.scale.y = 0.8
 		$Sprite.texture = load(cientist_sprite)
 		add_to_group("cientist")
 	
@@ -35,7 +35,7 @@ func _draw():
 		$Sprite.scale.y = 0.8
 		$Sprite.texture = load(mage_sprite)
 	if Player == 1:
-		$Sprite.scale.y = -0.8
+		$Sprite.scale.y = 0.8
 		$Sprite.texture = load(cientist_sprite)
 	
 	pass

@@ -6,8 +6,8 @@ var ct_combinations : Array
 var cur_type_mg = "imunity"
 var mg_combinations : Array
 var dir : Vector2
-var cur_velocity_element_ct = 0
-var cur_velocity_element_mg = 0
+var cur_velocity_element_ct = 320
+var cur_velocity_element_mg = 320
 
 #enum player_type {CIENTISTA, MAGO}
 
@@ -26,13 +26,11 @@ var flag_shot = false
 
 onready var pre_element = preload("res://elementos.tscn")
 
-onready var element = $Node2D
-
 onready var arrow_ct = $Node2D/Control/Cientist/arrow_ct
 onready var arrow_mg = $Node2D/Control/Mage/arrow_mg
 
 func _ready():
-	Global_Player.cur_player = 1 #set Mage
+	Global_Player.cur_player = 0 #set Mage
 	
 	$Node2D/Control/Cientist/HSlider.min_value = 1
 	$Node2D/Control/Cientist/HSlider.max_value = 500

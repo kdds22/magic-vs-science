@@ -58,11 +58,6 @@ onready var ct_comb_path : Array = [
 
 
 
-func get_scene(value):
-	
-	pass
-
-
 
 func cur_tex_element(value):
 	if cur_player == 0:

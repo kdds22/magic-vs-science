@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Cenario3.png" type="Texture" id=2]
 [ext_resource path="res://scenes/caution_dodge.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/character.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scripts/elements.gd" type="Script" id=5]
-[ext_resource path="res://assets/sprites/caixamago.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/caixacientista.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Desviando_Cientista-Sheet.png" type="Texture" id=5]
+[ext_resource path="res://scripts/elements.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/caixamago.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/caixacientista.png" type="Texture" id=8]
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,9 +31,19 @@ position = Vector2( 359, 311 )
 scale = Vector2( -1, -1 )
 
 [node name="Cientist" parent="." instance=ExtResource( 4 )]
-position = Vector2( 353, 99 )
-scale = Vector2( -1, 1 )
+position = Vector2( 359, 99 )
+rotation = 3.14159
 Player = 1
+
+[node name="Sprite" parent="Cientist" index="0"]
+texture = ExtResource( 5 )
+
+[node name="hit" parent="Cientist" index="2"]
+margin_left = 132.0
+margin_top = 44.0
+margin_right = 154.0
+margin_bottom = 58.0
+rect_rotation = 180.0
 
 [node name="Pos_Cien" type="Position2D" parent="."]
 position = Vector2( 358, 99 )
@@ -408,7 +419,7 @@ valign = 1
 uppercase = true
 
 [node name="Elements" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Show_Elements" type="Node2D" parent="."]
 editor/display_folded = true
@@ -427,7 +438,7 @@ anchor_bottom = 1.0
 [node name="Sprite" type="Sprite" parent="Show_Elements/Control"]
 position = Vector2( 105.5, 32.5 )
 scale = Vector2( 2.39773, 1.91176 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Show_Elements/Control"]
 anchor_right = 1.0
@@ -461,7 +472,7 @@ anchor_bottom = 1.0
 [node name="Sprite" type="Sprite" parent="Show_Elements2/Control"]
 position = Vector2( 105.5, 32.5 )
 scale = Vector2( 2.39773, 1.91176 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Show_Elements2/Control"]
 anchor_right = 1.0
@@ -489,3 +500,5 @@ position = Vector2( 171, 32 )
 [connection signal="pressed" from="Node2D/Control/Mage/btn_mana" to="." method="_on_mage_btn_mana_pressed"]
 [connection signal="pressed" from="Node2D/Control/Mage/btn_item" to="." method="_on_mage_btn_item_pressed"]
 [connection signal="value_changed" from="Node2D/Control/Mage/HSlider" to="." method="_on_mage_HSlider_value_changed"]
+
+[editable path="Cientist"]
