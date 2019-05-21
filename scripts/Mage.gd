@@ -32,6 +32,7 @@ var combination : Array = []
 var merge_comb
 
 signal game_over_mage
+signal hit_mage
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,6 +46,8 @@ func _ready():
 func hit(value):
 	
 	Global_Player_Mage.life -= value
+	emit_signal("hit_mage", value)
+	
 	if Global_Player_Mage.life <= 0:
 		emit_signal("game_over_mage")
 	
@@ -54,10 +57,6 @@ func hit(value):
 		$Sprite.visible = true
 		yield(get_tree().create_timer(.1), "timeout")
 
-
-func _process(delta):
-#	print(flag_shot)
-	pass
 
 
 
@@ -119,10 +118,14 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 #	element.init(who, type, dir, velocity) # identify elemnt
 #	action()
 
+func _on_mage_idle():
+	$AnimationPlayer.play("idle")
+	pass
 
 func _on_mage_btn_atack_pressed():
 	Global_Player_Mage.cur_player = 0
 	identify("mg", cur_type_mg)
+	$AnimationPlayer.play("atack")
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("dodge")

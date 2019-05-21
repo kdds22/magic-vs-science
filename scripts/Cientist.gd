@@ -34,6 +34,7 @@ var combination : Array = []
 var merge_comb
 
 signal game_over_cientist
+signal hit_cientist
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,6 +48,8 @@ func _ready():
 func hit(value):
 	
 	Global_Player_Cientist.life -= value
+	emit_signal("hit_cientist", value)
+	
 	if Global_Player_Cientist.life <= 0:
 		emit_signal("game_over_cientist")
 	
@@ -121,9 +124,13 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 #	element.init(who, type, dir, velocity) # identify elemnt
 #	action()
 
+func _on_cientist_idle():
+	$AnimationPlayer.play("idle")
+	pass
 
 func _on_cientist_btn_atack_pressed():
 	Global_Player_Cientist.cur_player = 1
+	$AnimationPlayer.play("atack")
 	identify("ct", cur_type_ct)
 	pass
 func _on_cientist_btn_dodge_pressed():

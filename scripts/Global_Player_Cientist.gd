@@ -46,7 +46,9 @@ func cur_tex_element(value):
 	if cur_player == 1:
 		return cur_tex_element_ct[value]
 
-
+func reset_life():
+	life = 20
+	pass
 
 
 

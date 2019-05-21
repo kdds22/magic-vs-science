@@ -8,8 +8,31 @@ func _ready():
 	$Result/Mage/Los.hide()
 	$Result/Node2D/Button.hide()
 	
-	pass
+	reset_lifes()
 	
+	pass
+
+func reset_lifes():
+	Global_Player_Cientist.reset_life()
+	Global_Player_Mage.reset_life()
+	$Lifes/Cientist/TextureProgress.max_value = Global_Player_Cientist.life
+	$Lifes/Cientist/TextureProgress.min_value = 0
+	$Lifes/Mage/TextureProgress.max_value = Global_Player_Mage.life
+	$Lifes/Mage/TextureProgress.min_value = 0
+
+func set_life_bar(value, who):
+	if who == 0:
+		$Lifes/Mage/TextureProgress.value = Global_Player_Mage.life
+	elif who == 1:
+		$Lifes/Cientist/TextureProgress.value = Global_Player_Cientist.life
+	
+	pass
+
+
+func _process(delta):
+	print("Mage life = ", Global_Player_Mage.life)
+	print("Cientist life = ", Global_Player_Cientist.life)
+	pass
 
 
 func _on_Mage_game_over_mage():
@@ -31,4 +54,13 @@ func _on_Cientist_game_over_cientist():
 
 
 func _on_Button_pressed():
+	reset_lifes()
 	get_tree().reload_current_scene()
+
+
+func _on_Mage_hit_mage(value):
+	set_life_bar(value, 0)
+
+
+func _on_Cientist_hit_cientist(value):
+	set_life_bar(value, 1)

@@ -43,6 +43,10 @@ func cur_tex_element(value):
 		return cur_tex_element_mg[value]
 
 
+func reset_life():
+	life = 20
+	pass
+
 
 
 

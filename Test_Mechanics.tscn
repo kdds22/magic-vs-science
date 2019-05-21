@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Cenario3.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/sprites/caixacientista.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/Winner.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/Loser.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/GUI/greenbar (2).png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/GUI/greenbar (3).png" type="Texture" id=12]
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,30 +25,32 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Caution_Area" parent="." instance=ExtResource( 3 )]
-position = Vector2( 359, 622 )
+position = Vector2( 359, 690 )
 
 [node name="Mage" parent="." instance=ExtResource( 4 )]
-position = Vector2( 358, 858 )
+editor/display_folded = true
+position = Vector2( 358, 893 )
 
 [node name="Caution_Area2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 359, 311 )
+position = Vector2( 359, 282 )
 scale = Vector2( -1, -1 )
 
 [node name="Cientist" parent="." instance=ExtResource( 5 )]
-position = Vector2( 358, 99 )
+editor/display_folded = true
+position = Vector2( 358, 70 )
 rotation = 3.14159
 
 [node name="Pos_Mag" type="Position2D" parent="."]
-position = Vector2( 358, 858 )
+position = Vector2( 358, 893 )
 
 [node name="Pos_Cien" type="Position2D" parent="."]
-position = Vector2( 358, 99 )
+position = Vector2( 358, 70 )
 
 [node name="Pos_CT_Action" type="Position2D" parent="."]
-position = Vector2( 359, 205 )
+position = Vector2( 359, 176 )
 
 [node name="Pos_MG_Action" type="Position2D" parent="."]
-position = Vector2( 359, 738 )
+position = Vector2( 359, 773 )
 
 [node name="Node2D" type="Node2D" parent="."]
 editor/display_folded = true
@@ -517,8 +521,41 @@ margin_right = -93.75
 margin_bottom = -23.75
 rect_scale = Vector2( 5, 5 )
 text = "RESTART"
+
+[node name="Lifes" type="Node2D" parent="."]
+position = Vector2( 354, 479 )
+
+[node name="Mage" type="Node2D" parent="Lifes"]
+position = Vector2( 46, 348 )
+
+[node name="TextureProgress" type="TextureProgress" parent="Lifes/Mage"]
+margin_left = 49.0
+margin_top = 78.0
+margin_right = 157.0
+margin_bottom = 88.0
+rect_scale = Vector2( 2, 2 )
+value = 70.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+tint_progress = Color( 0.231373, 0.454902, 0.552941, 1 )
+
+[node name="Cientist" type="Node2D" parent="Lifes"]
+position = Vector2( -167, -468 )
+
+[node name="TextureProgress" type="TextureProgress" parent="Lifes/Cientist"]
+margin_left = -116.0
+margin_top = 18.0
+margin_right = -8.0
+margin_bottom = 28.0
+rect_scale = Vector2( 2, 2 )
+value = 70.0
+texture_under = ExtResource( 11 )
+texture_progress = ExtResource( 12 )
+tint_progress = Color( 0.0666667, 0.368627, 0.2, 1 )
 [connection signal="game_over_mage" from="Mage" to="." method="_on_Mage_game_over_mage"]
+[connection signal="hit_mage" from="Mage" to="." method="_on_Mage_hit_mage"]
 [connection signal="game_over_cientist" from="Cientist" to="." method="_on_Cientist_game_over_cientist"]
+[connection signal="hit_cientist" from="Cientist" to="." method="_on_Cientist_hit_cientist"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]
