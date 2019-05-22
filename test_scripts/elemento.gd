@@ -34,18 +34,19 @@ func init(cat:String, path:String, dir:Vector2, velocity:int):
 	self.dir = dir
 	self.velocity = velocity
 	
-	print(self.dir)
+#	print(self.dir)
+#	print("ops 2")
 	
 	if cat == "mg":
 		for i in Global_Player_Mage.mg_comb_name.size():
 			if path == Global_Player_Mage.mg_comb_name[i]:
 				ele = Global_Player_Mage.mg_comb_path[i]
-				print(path)
+#				print(path)
 	if cat == "ct":
 		for i in Global_Player_Cientist.ct_comb_name.size():
 			if path == Global_Player_Cientist.ct_comb_name[i]:
 				ele = Global_Player_Cientist.ct_comb_path[i]
-				print(path)
+#				print(path)
 			
 	
 	if cat == "ct" or cat == "mg":

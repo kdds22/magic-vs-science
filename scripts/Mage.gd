@@ -21,7 +21,7 @@ var dir_mg = Vector2(0,-1)
 
 var flag_shot = false
 
-onready var pre_element = preload("res://elementos.tscn")
+onready var pre_element = preload("res://elemento.tscn")
 
 
 
@@ -124,8 +124,9 @@ func _on_mage_idle():
 
 func _on_mage_btn_atack_pressed():
 	Global_Player_Mage.cur_player = 0
-	identify("mg", cur_type_mg)
 	$AnimationPlayer.play("atack")
+	yield($AnimationPlayer, "animation_finished")
+	identify("mg", cur_type_mg)
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("dodge")
@@ -240,6 +241,7 @@ func get_combination():
 					for j in i.get_children():
 						j.queue_free()
 					Global_Player_Mage.cur_comb_mg = ""
+					merge_comb = null
 			return
 
 

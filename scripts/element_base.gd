@@ -28,7 +28,8 @@ func set_attr(value : Dictionary):
 	elif vel == 3:
 		velocity = 400
 	self.chan = value["chance"]
-	print("Atributos: ", dano, vel, chan)
+	
+#	print("Atributos: ", dano, vel, chan)
 	
 	pass
 

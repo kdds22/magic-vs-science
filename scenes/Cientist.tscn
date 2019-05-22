@@ -9,7 +9,7 @@
 radius = 39.0
 height = 8.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "atack"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -86,7 +86,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "dodge"
 length = 1.4
 tracks/0/type = "value"
@@ -164,7 +164,7 @@ tracks/5/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "idle"
 length = 1.5
 loop = true
@@ -254,6 +254,6 @@ text = "HIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/atack = SubResource( 3 )
-anims/dodge = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/atack = SubResource( 2 )
+anims/dodge = SubResource( 3 )
+anims/idle = SubResource( 4 )
