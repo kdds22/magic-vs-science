@@ -110,8 +110,8 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 	ele.position = pos
 	ele.set_flag(true)
 	ele.dir = pre_ele[1]
+	
 	if merge_comb != null:
-		print(merge_comb)
 		ele.set_attr(merge_comb)
 	else:
 		return
@@ -129,7 +129,6 @@ func _on_mage_btn_atack_pressed():
 	flag_shot = false
 	yield($AnimationPlayer, "animation_finished")
 	flag_shot = true
-	yield($AnimationPlayer, "animation_finished")
 	identify("mg", cur_type_mg)
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
@@ -186,10 +185,12 @@ func set_debug_element(value):
 			set_combination(2)
 		if value == "Dodge_Mage":
 			_on_mage_btn_dodge_pressed()
-
+		
 		if mg_combinations.size() == 3:
-			var comb = get_combination()
-	#		print(comb)
+#			var comb = get_combination()
+#			print(comb)
+			get_combination()
+			print(merge_comb)
 			if value == "Atack_Mage" and merge_comb != null:
 				_on_mage_btn_atack_pressed()
 				mg_combinations.clear()
@@ -204,6 +205,7 @@ func set_debug_element(value):
 				for j in i.get_children():
 					j.queue_free()
 				Global_Player_Mage.cur_comb_mg = ""
+#				merge_comb = null
 	
 #	print(mg_combinations)
 

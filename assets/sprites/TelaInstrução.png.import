@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TelaSplash - Copia.png-51ab1a5c61ec520e80737e295bc01461.stex"
+path="res://.import/TelaInstrução.png-66dbda1aad5c267166538f6d0bee7074.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/TelaSplash - Copia.png"
-dest_files=[ "res://.import/TelaSplash - Copia.png-51ab1a5c61ec520e80737e295bc01461.stex" ]
+source_file="res://assets/sprites/TelaInstrução.png"
+dest_files=[ "res://.import/TelaInstrução.png-66dbda1aad5c267166538f6d0bee7074.stex" ]
 
 [params]
 

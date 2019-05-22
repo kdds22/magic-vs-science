@@ -9,7 +9,7 @@
 radius = 39.0
 height = 8.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "atack"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -86,8 +86,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0.5, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "dodge"
+[sub_resource type="Animation" id=3]
 length = 1.5
 step = 0.05
 tracks/0/type = "value"
@@ -165,8 +164,7 @@ tracks/5/keys = {
 "values": [ 1.5 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -255,6 +253,6 @@ text = "HIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-anims/atack = SubResource( 4 )
-anims/dodge = SubResource( 2 )
-anims/idle = SubResource( 3 )
+anims/atack = SubResource( 2 )
+anims/dodge = SubResource( 3 )
+anims/idle = SubResource( 4 )

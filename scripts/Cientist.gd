@@ -112,18 +112,16 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 	var element = pre_element.instance()
 	element.init(who, type, dir, velocity)
 	var pre_ele = element.get_ele()
-	print("pre-ele: ",pre_ele)
+#	print("pre-ele: ",pre_ele)
 	var ele = pre_ele[0].instance()
-	print("ele: ",ele)
+#	print("ele: ",ele)
 	ele.position = pos
 	ele.set_flag(true)
 	ele.dir = pre_ele[1]
 	
 	if merge_comb != null:
-		print("comb: ",merge_comb)
 		ele.set_attr(merge_comb)
 	else:
-		print("comb: ",merge_comb)
 		return
 	get_parent().get_node("Elements").add_child(ele)
 #	element.init(who, type, dir, velocity) # identify elemnt
@@ -199,8 +197,9 @@ func set_debug_element(value):
 			_on_cientist_btn_dodge_pressed()
 		
 		if ct_combinations.size() == 3:
-			var comb = get_combination()
-	#		print(comb)
+#			var comb = get_combination()
+#			print(comb)
+			get_combination()
 			if value == "Atack_Cientist" and merge_comb != null:
 				_on_cientist_btn_atack_pressed()
 				ct_combinations.clear()
@@ -215,6 +214,7 @@ func set_debug_element(value):
 				for j in i.get_children():
 					j.queue_free()
 				Global_Player_Cientist.cur_comb_ct = ""
+				merge_comb = null
 	
 #	print(mg_combinations)
 
