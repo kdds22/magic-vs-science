@@ -7,7 +7,10 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.4006
 
-[node name="Elements_BH" instance=ExtResource( 1 )]
+[node name="Elements_BH" index="0" groups=[
+"112",
+"ct",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]

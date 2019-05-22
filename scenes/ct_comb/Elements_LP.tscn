@@ -25,7 +25,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[node name="Elements_LP" index="0" instance=ExtResource( 1 )]
+[node name="Elements_LP" index="0" groups=[
+"ct",
+"332",
+] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]

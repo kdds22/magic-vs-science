@@ -485,6 +485,7 @@ position = Vector2( 107, 32 )
 position = Vector2( 171, 32 )
 
 [node name="Result" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 355, 478 )
 scale = Vector2( 0.8, 0.8 )
 
@@ -523,6 +524,7 @@ rect_scale = Vector2( 5, 5 )
 text = "RESTART"
 
 [node name="Lifes" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 354, 479 )
 
 [node name="Mage" type="Node2D" parent="Lifes"]

@@ -165,6 +165,7 @@ func _input(event):
 	if event.is_pressed() and not event.is_echo():
 		var text = get_parent().get_node("Elements").identify_elements(event.as_text())
 		if flag_shot:
+#			print(text)
 			set_debug_element(text[1])
 		else:
 			pass
@@ -190,7 +191,7 @@ func set_debug_element(value):
 #			var comb = get_combination()
 #			print(comb)
 			get_combination()
-			print(merge_comb)
+#			print(merge_comb)
 			if value == "Atack_Mage" and merge_comb != null:
 				_on_mage_btn_atack_pressed()
 				mg_combinations.clear()
@@ -255,10 +256,12 @@ func get_combination():
 
 
 func get_global_combination(type, value, global_comb):
+#	print(global_comb)
 	flag_shot = true
 	
 	if Global_Player_Mage.cur_player == 0:
 		var i = Global_Player_Mage.mg_comb_name[value] #String name
+#		print("i: ",i)
 		cur_type_mg = i
 		var j = Global_Player_Mage.mg_comb_path[value].instance() #packet scene
 		merge_comb = get_parent().get_node("Elements").mage_combinations[i]
