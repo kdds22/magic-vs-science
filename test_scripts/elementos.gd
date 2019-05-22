@@ -56,7 +56,8 @@ func _process(delta):
 	if position.y >= 980:
 		queue_free()
 	position += position * direction * delta
-	print(position)
+#	print(position)
+#	print("ops?")
 	pass
 
 

@@ -21,7 +21,7 @@ var dir_ct = Vector2(0,1)
 
 var flag_shot = false
 
-onready var pre_element = preload("res://elementos.tscn")
+onready var pre_element = preload("res://elemento.tscn")
 
 
 
@@ -43,6 +43,7 @@ func _ready():
 	$Sprite.scale.y = 0.8
 #	$Sprite.texture = load(cientist_sprite)
 	add_to_group("cientist")
+	flag_shot = true
 	
 
 func hit(value):
@@ -111,14 +112,18 @@ func action(who:String, type:String, dir:Vector2, pos:Vector2, velocity:int):
 	var element = pre_element.instance()
 	element.init(who, type, dir, velocity)
 	var pre_ele = element.get_ele()
+	print("pre-ele: ",pre_ele)
 	var ele = pre_ele[0].instance()
+	print("ele: ",ele)
 	ele.position = pos
 	ele.set_flag(true)
 	ele.dir = pre_ele[1]
+	
 	if merge_comb != null:
-		print(merge_comb)
+		print("comb: ",merge_comb)
 		ele.set_attr(merge_comb)
 	else:
+		print("comb: ",merge_comb)
 		return
 	get_parent().get_node("Elements").add_child(ele)
 #	element.init(who, type, dir, velocity) # identify elemnt
@@ -131,6 +136,11 @@ func _on_cientist_idle():
 func _on_cientist_btn_atack_pressed():
 	Global_Player_Cientist.cur_player = 1
 	$AnimationPlayer.play("atack")
+	#shot after atack animation
+	flag_shot = false
+	yield($AnimationPlayer, "animation_finished")
+	flag_shot = true
+	#now, shot
 	identify("ct", cur_type_ct)
 	pass
 func _on_cientist_btn_dodge_pressed():
@@ -166,7 +176,10 @@ func _input(event):
 	
 	if event.is_pressed() and not event.is_echo():
 		var text = get_parent().get_node("Elements").identify_elements(event.as_text())
-		set_debug_element(text[1])
+		if flag_shot:
+			set_debug_element(text[1])
+		else:
+			pass
 #		set_input_text(text[0], text[1])
 
 
@@ -246,6 +259,7 @@ func get_combination():
 					for j in i.get_children():
 						j.queue_free()
 					Global_Player_Cientist.cur_comb_ct = ""
+					merge_comb = null
 			return
 
 

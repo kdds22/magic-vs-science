@@ -28,10 +28,13 @@ func set_life_bar(value, who):
 	
 	pass
 
-
+var x = 0
 func _process(delta):
-	print("Mage life = ", Global_Player_Mage.life)
-	print("Cientist life = ", Global_Player_Cientist.life)
+#	x += delta
+#	if x > 5:
+#		print("Mage life = ", Global_Player_Mage.life)
+#		print("Cientist life = ", Global_Player_Cientist.life)
+#		x = 0
 	pass
 
 

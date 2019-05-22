@@ -21,7 +21,7 @@ var dir_mg = Vector2(0,-1)
 
 var flag_shot = false
 
-onready var pre_element = preload("res://elementos.tscn")
+onready var pre_element = preload("res://elemento.tscn")
 
 
 
@@ -41,6 +41,7 @@ func _ready():
 	Player = 0
 	$Sprite.scale.y = 0.8
 	add_to_group("mage")
+	flag_shot = true
 	
 
 func hit(value):
@@ -124,8 +125,11 @@ func _on_mage_idle():
 
 func _on_mage_btn_atack_pressed():
 	Global_Player_Mage.cur_player = 0
-	identify("mg", cur_type_mg)
 	$AnimationPlayer.play("atack")
+	flag_shot = false
+	yield($AnimationPlayer, "animation_finished")
+	flag_shot = true
+	identify("mg", cur_type_mg)
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("dodge")
@@ -160,7 +164,10 @@ func _input(event):
 	
 	if event.is_pressed() and not event.is_echo():
 		var text = get_parent().get_node("Elements").identify_elements(event.as_text())
-		set_debug_element(text[1])
+		if flag_shot:
+			set_debug_element(text[1])
+		else:
+			pass
 #		set_input_text(text[0], text[1])
 
 
@@ -240,6 +247,7 @@ func get_combination():
 					for j in i.get_children():
 						j.queue_free()
 					Global_Player_Mage.cur_comb_mg = ""
+					merge_comb = null
 			return
 
 
