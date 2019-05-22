@@ -126,9 +126,13 @@ func _on_mage_idle():
 func _on_mage_btn_atack_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("atack")
+<<<<<<< HEAD
 	flag_shot = false
 	yield($AnimationPlayer, "animation_finished")
 	flag_shot = true
+=======
+	yield($AnimationPlayer, "animation_finished")
+>>>>>>> master
 	identify("mg", cur_type_mg)
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
