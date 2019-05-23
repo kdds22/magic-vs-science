@@ -235,23 +235,29 @@ func get_combination():
 
 	if Global_Player_Mage.cur_player == 0:
 		if global_comb == "112" or global_comb == "211" or global_comb == "121":
-				get_global_combination(0, 0, global_comb)
+			Global_Player_Mage.cur_comb_mg = "112"
+			get_global_combination(0, 0, global_comb)
 		elif global_comb == "113" or global_comb == "311" or global_comb == "131":
-				get_global_combination(0, 1, global_comb)
+			Global_Player_Mage.cur_comb_mg = "113"
+			get_global_combination(0, 1, global_comb)
 		elif global_comb == "221" or global_comb == "212" or global_comb == "122":
-				get_global_combination(0, 2, global_comb)
+			Global_Player_Mage.cur_comb_mg = "221"
+			get_global_combination(0, 2, global_comb)
 		elif global_comb == "223" or global_comb == "232" or global_comb == "322":
-				get_global_combination(0, 3, global_comb)
+			Global_Player_Mage.cur_comb_mg = "223"
+			get_global_combination(0, 3, global_comb)
 		elif global_comb == "331" or global_comb == "313" or global_comb == "133":
-				get_global_combination(0, 4, global_comb)
+			Global_Player_Mage.cur_comb_mg = "331"
+			get_global_combination(0, 4, global_comb)
 		elif global_comb == "332" or global_comb == "323" or global_comb == "233":
-				get_global_combination(0, 5, global_comb)
+			Global_Player_Mage.cur_comb_mg = "332"
+			get_global_combination(0, 5, global_comb)
 		else:
 			for i in get_parent().get_node("Show_Elements/Control/HBoxContainer").get_children():
-					for j in i.get_children():
-						j.queue_free()
-					Global_Player_Mage.cur_comb_mg = ""
-					merge_comb = null
+				for j in i.get_children():
+					j.queue_free()
+				Global_Player_Mage.cur_comb_mg = ""
+				merge_comb = null
 			return
 
 

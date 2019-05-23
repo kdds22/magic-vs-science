@@ -243,23 +243,29 @@ func get_combination():
 
 	if Global_Player_Cientist.cur_player == 1:
 		if global_comb == "112" or global_comb == "211" or global_comb == "121":
-				get_global_combination(1, 0, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "112"
+			get_global_combination(1, 0, global_comb)
 		elif global_comb == "113" or global_comb == "311" or global_comb == "131":
-				get_global_combination(1, 1, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "113"
+			get_global_combination(1, 1, global_comb)
 		elif global_comb == "221" or global_comb == "212" or global_comb == "122":
-				get_global_combination(1, 2, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "221"
+			get_global_combination(1, 2, global_comb)
 		elif global_comb == "223" or global_comb == "232" or global_comb == "322":
-				get_global_combination(1, 3, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "223"
+			get_global_combination(1, 3, global_comb)
 		elif global_comb == "331" or global_comb == "313" or global_comb == "133":
-				get_global_combination(1, 4, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "331"
+			get_global_combination(1, 4, global_comb)
 		elif global_comb == "332" or global_comb == "323" or global_comb == "233":
-				get_global_combination(1, 5, global_comb)
+			Global_Player_Cientist.cur_comb_ct = "332"
+			get_global_combination(1, 5, global_comb)
 		else:
 			for i in get_parent().get_node("Show_Elements2/Control/HBoxContainer").get_children():
-					for j in i.get_children():
-						j.queue_free()
-					Global_Player_Cientist.cur_comb_ct = ""
-					merge_comb = null
+				for j in i.get_children():
+					j.queue_free()
+				Global_Player_Cientist.cur_comb_ct = ""
+				merge_comb = null
 			return
 
 

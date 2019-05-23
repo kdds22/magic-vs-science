@@ -41,14 +41,18 @@ func area(area : Area2D):
 	if area.is_in_group("mg"):
 		for i in pre_combinations.size():
 			if area.is_in_group(pre_combinations[i]):
-				make_counter(pre_combinations[i])
+				var x = make_counter(pre_combinations[i])
+				if !x:
+					queue_free()
 			pass
 	
 	
 	if area.is_in_group("ct"):
 		for i in pre_combinations.size():
 			if area.is_in_group(pre_combinations[i]):
-				make_counter(pre_combinations[i])
+				var x = make_counter(pre_combinations[i])
+				if !x:
+					queue_free()
 			pass
 #		if area.is_in_group(
 	
@@ -62,36 +66,63 @@ func area(area : Area2D):
 		queue_free()
 
 
+# 1 > 3 > 2 > 1 ...
+# 11 > 33 > 22
+# 113 > 112 
+# 221 > 223
+# 332 > 331
+# 
+# 
+# 
+#
+#
+#
+#
+
 func make_counter(value):
-	var t1 : String = cur_self_type
-	var t2 = value
-	var x = ""
-	var y = ""
-	for i in t1.length():
-#		print(x.length())
-#		print(t1[i])
-		if i < 2:
-			x += t1[i]
-			y += t2[i]
-		else:
-			x = t1[i]
-			y = t2[i]
-#		var z = x + y
-#		if z.length() == 2:
-		if (x.length() == 2) and (y.length() == 2):
-			if x == y:
-				print("os dois iniciais são iguais")
-		elif int(x) > int(y):
-			print("x vence")
-		elif int(x) < int(y):
-			print("y vence")
-			
-		print(x, y)
-		
-		
-		#####COUNTERSSSSSSSSSSSSSs
+#	var x := [] #elemento proprio
+#	var y := [] #elemento externo
 	
-	pass
+	var t1 : String = cur_self_type # origem
+	var t2 : String = value #elemento colidido
+	
+	if t1.to_int() == 112:
+		if t2.to_int() == 331 or t2.to_int() == 332:
+			return true #suave
+		if t2.to_int() == 113 or t2.to_int() == 221 or t2.to_int() == 223:
+			return false #treta
+	
+	if t1.to_int() == 113:
+		if t2.to_int() == 112 or t2.to_int() == 331 or t2.to_int() == 332:
+			return true #suave
+		if t2.to_int() == 221 or t2.to_int() == 223:
+			return false #treta
+		
+	if t1.to_int() == 221:
+		if t2.to_int() == 112 or t2.to_int() == 113:
+			return true #suave
+		if t2.to_int() == 331 or t2.to_int() == 332 or t2.to_int() == 223:
+			return false #treta	
+		
+	if t1.to_int() == 223:
+		if t2.to_int() == 221 or t2.to_int() == 112 or t2.to_int() == 113:
+			return true #suave
+		if t2.to_int() == 331 or t2.to_int() == 332:
+			return false #treta
+			
+	if t1.to_int() == 331:
+		if t2.to_int() == 221 or t2.to_int() == 223 :
+			return true #suave
+		if t2.to_int() == 332 or t2.to_int() == 112 or t2.to_int() == 113:
+			return false #treta
+			
+	if t1.to_int() == 332:
+		if t2.to_int() == 221 or t2.to_int() == 223 or t2.to_int() == 331:
+			return true #suave
+		if t2.to_int() == 113 or t2.to_int() == 112:
+			return false #treta
+	
+
 
 
 
