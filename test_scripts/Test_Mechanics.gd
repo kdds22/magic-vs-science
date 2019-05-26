@@ -63,7 +63,30 @@ func _on_Button_pressed():
 
 func _on_Mage_hit_mage(value):
 	set_life_bar(value, 0)
+func _on_Mage_critical():
+	$Show_Elements/Control/Anim.play("pisk")
+	pass # Replace with function body.
+func _on_Mage_shoted():
+	$Show_Elements/Control/Anim.play("idle")
+	pass # Replace with function body.
+
 
 
 func _on_Cientist_hit_cientist(value):
 	set_life_bar(value, 1)
+func _on_Cientist_critical():
+	$Show_Elements2/Control/Anim.play("pisk")
+	pass # Replace with function body.
+func _on_Cientist_shoted():
+	$Show_Elements2/Control/Anim.play("idle")
+	pass # Replace with function body.
+
+
+
+
+
+
+
+
+
+

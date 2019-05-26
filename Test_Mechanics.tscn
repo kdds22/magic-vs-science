@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://test_scripts/Test_Mechanics.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Cenario3.png" type="Texture" id=2]
@@ -6,12 +6,78 @@
 [ext_resource path="res://scenes/Mage.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Cientist.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/elements.gd" type="Script" id=6]
-[ext_resource path="res://assets/sprites/caixamago.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/caixacientista.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/caixamago2.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/caixacientista2.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/Winner.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/Loser.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/GUI/greenbar (2).png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/GUI/greenbar (3).png" type="Texture" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "pisk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "pisk"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Test_Mechanics" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,7 +94,6 @@ centered = false
 position = Vector2( 359, 690 )
 
 [node name="Mage" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 358, 893 )
 
 [node name="Caution_Area2" parent="." instance=ExtResource( 3 )]
@@ -417,7 +482,6 @@ uppercase = true
 script = ExtResource( 6 )
 
 [node name="Show_Elements" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 130, 814 )
 
 [node name="Control" type="Control" parent="Show_Elements"]
@@ -427,12 +491,13 @@ margin_right = 140.0
 margin_bottom = 18.0
 
 [node name="Panel" type="Panel" parent="Show_Elements/Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="Show_Elements/Control"]
 position = Vector2( 105.5, 32.5 )
-scale = Vector2( 2.39773, 1.91176 )
+scale = Vector2( 1.20787, 1.09836 )
 texture = ExtResource( 7 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Show_Elements/Control"]
@@ -450,8 +515,12 @@ position = Vector2( 107, 32 )
 [node name="Position2D3" type="Position2D" parent="Show_Elements/Control/HBoxContainer"]
 position = Vector2( 171, 32 )
 
+[node name="Anim" type="AnimationPlayer" parent="Show_Elements/Control"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+anims/pisk = SubResource( 2 )
+
 [node name="Show_Elements2" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 538, 148 )
 
 [node name="Control" type="Control" parent="Show_Elements2"]
@@ -461,12 +530,13 @@ margin_right = 140.0
 margin_bottom = 18.0
 
 [node name="Panel" type="Panel" parent="Show_Elements2/Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Sprite" type="Sprite" parent="Show_Elements2/Control"]
 position = Vector2( 105.5, 32.5 )
-scale = Vector2( 2.39773, 1.91176 )
+scale = Vector2( 1.18539, 1.03279 )
 texture = ExtResource( 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Show_Elements2/Control"]
@@ -483,6 +553,11 @@ position = Vector2( 107, 32 )
 
 [node name="Position2D3" type="Position2D" parent="Show_Elements2/Control/HBoxContainer"]
 position = Vector2( 171, 32 )
+
+[node name="Anim" type="AnimationPlayer" parent="Show_Elements2/Control"]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+anims/pisk = SubResource( 4 )
 
 [node name="Result" type="Node2D" parent="."]
 editor/display_folded = true
@@ -554,10 +629,14 @@ value = 70.0
 texture_under = ExtResource( 11 )
 texture_progress = ExtResource( 12 )
 tint_progress = Color( 0.0666667, 0.368627, 0.2, 1 )
+[connection signal="critical" from="Mage" to="." method="_on_Mage_critical"]
 [connection signal="game_over_mage" from="Mage" to="." method="_on_Mage_game_over_mage"]
 [connection signal="hit_mage" from="Mage" to="." method="_on_Mage_hit_mage"]
+[connection signal="shoted" from="Mage" to="." method="_on_Mage_shoted"]
+[connection signal="critical" from="Cientist" to="." method="_on_Cientist_critical"]
 [connection signal="game_over_cientist" from="Cientist" to="." method="_on_Cientist_game_over_cientist"]
 [connection signal="hit_cientist" from="Cientist" to="." method="_on_Cientist_hit_cientist"]
+[connection signal="shoted" from="Cientist" to="." method="_on_Cientist_shoted"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_atack" to="." method="_on_cientist_btn_atack_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_dodge" to="." method="_on_cientist_btn_dodge_pressed"]
 [connection signal="pressed" from="Node2D/Control/Cientist/btn_nucleo" to="." method="_on_cientist_btn_nucleo_pressed"]

@@ -33,6 +33,11 @@ var Player
 var combination : Array = []
 var merge_comb
 
+var okidoki = false
+signal critical
+signal shoted
+
+
 signal game_over_cientist
 signal hit_cientist
 
@@ -137,10 +142,14 @@ func _on_cientist_btn_atack_pressed():
 	#shot after atack animation
 	flag_shot = false
 	yield($AnimationPlayer, "animation_finished")
+	
+func shot():
+	emit_signal("shoted")
 	flag_shot = true
 	#now, shot
 	identify("ct", cur_type_ct)
-	pass
+
+
 func _on_cientist_btn_dodge_pressed():
 	Global_Player_Cientist.cur_player = 1
 	$AnimationPlayer.play("dodge")
@@ -207,6 +216,8 @@ func set_debug_element(value):
 					for j in i.get_children():
 						j.queue_free()
 					Global_Player_Cientist.cur_comb_ct = ""
+			if value == "Atack_Cientist" and okidoki == true:
+				clear_ele_base()
 		
 		if ct_combinations.size() > 3:
 			ct_combinations.clear()
@@ -261,11 +272,12 @@ func get_combination():
 			Global_Player_Cientist.cur_comb_ct = "332"
 			get_global_combination(1, 5, global_comb)
 		else:
-			for i in get_parent().get_node("Show_Elements2/Control/HBoxContainer").get_children():
-				for j in i.get_children():
-					j.queue_free()
-				Global_Player_Cientist.cur_comb_ct = ""
-				merge_comb = null
+			if global_comb == "123" or global_comb == "132" or global_comb == "213" or global_comb == "231" or global_comb == "321" or global_comb == "312" or global_comb == "111" or global_comb == "222" or global_comb == "333":
+				if not okidoki:
+					critical()
+				else: clear_ele_base()
+			
+			
 			return
 
 
@@ -279,6 +291,25 @@ func get_global_combination(type, value, global_comb):
 		merge_comb = get_parent().get_node("Elements").cientist_combinations[i]
 	pass
 
+func critical():
+	okidoki = true
+#	Global_Player_Cientist.cur_comb_ct = ""
+#	merge_comb = null
+#	clear_ele_base()
+	pass
+
+func clear_ele_base():
+	
+	for i in get_parent().get_node("Show_Elements2/Control/HBoxContainer").get_children():
+		for j in i.get_children():
+			j.queue_free()
+	
+		Global_Player_Cientist.cur_comb_ct = ""
+		merge_comb = null
+	
+	emit_signal("critical")
+	
+	okidoki = false
 
 
 

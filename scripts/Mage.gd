@@ -31,6 +31,10 @@ var Player
 var combination : Array = []
 var merge_comb
 
+var okidoki = false
+signal critical
+signal shoted
+
 signal game_over_mage
 signal hit_mage
 
@@ -123,13 +127,18 @@ func _on_mage_idle():
 	$AnimationPlayer.play("idle")
 	pass
 
+
 func _on_mage_btn_atack_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("atack")
 	flag_shot = false
 	yield($AnimationPlayer, "animation_finished")
+
+func shot():
+	emit_signal("shoted")
 	flag_shot = true
 	identify("mg", cur_type_mg)
+
 func _on_mage_btn_dodge_pressed():
 	Global_Player_Mage.cur_player = 0
 	$AnimationPlayer.play("dodge")
@@ -199,6 +208,9 @@ func set_debug_element(value):
 					for j in i.get_children():
 						j.queue_free()
 					Global_Player_Mage.cur_comb_mg = ""
+			
+			if value == "Atack_Mage" and okidoki == true:
+				clear_ele_base()
 
 		if mg_combinations.size() > 3:
 			mg_combinations.clear()
@@ -253,11 +265,12 @@ func get_combination():
 			Global_Player_Mage.cur_comb_mg = "332"
 			get_global_combination(0, 5, global_comb)
 		else:
-			for i in get_parent().get_node("Show_Elements/Control/HBoxContainer").get_children():
-				for j in i.get_children():
-					j.queue_free()
-				Global_Player_Mage.cur_comb_mg = ""
-				merge_comb = null
+			if global_comb == "123" or global_comb == "132" or global_comb == "213" or global_comb == "231" or global_comb == "321" or global_comb == "312" or global_comb == "111" or global_comb == "222" or global_comb == "333":
+				if not okidoki:
+					critical()
+				else: clear_ele_base()
+			
+#			
 			return
 
 
@@ -273,9 +286,25 @@ func get_global_combination(type, value, global_comb):
 		merge_comb = get_parent().get_node("Elements").mage_combinations[i]
 	pass
 
+func critical():
+	okidoki = true
+#	Global_Player_Cientist.cur_comb_ct = ""
+#	merge_comb = null
+#	clear_ele_base()
+	pass
 
-
-
+func clear_ele_base():
+	
+	for i in get_parent().get_node("Show_Elements/Control/HBoxContainer").get_children():
+		for j in i.get_children():
+			j.queue_free()
+	
+		Global_Player_Mage.cur_comb_mg = ""
+		merge_comb = null
+	
+	emit_signal("critical")
+	
+	okidoki = false
 
 
 
